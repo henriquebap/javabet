@@ -14,7 +14,7 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
             .oauth2Login(login -> login
-                //.userInfoEndpoint(userInfo -> userInfo.userService(userService))
+                .userInfoEndpoint(userInfo -> userInfo.userService(userService))
                 .permitAll()
             )
 

@@ -29,6 +29,13 @@ public class GameController {
         this.userRepository = userRepository;
     }
 
+    @GetMapping("/")
+    public String getAllGames(Model model) {
+        List<Game> games = gameService.getAllGames();
+        model.addAttribute("games", games);
+        return "games"; 
+    }
+
     @GetMapping("/games/{id}")
     public String getGameDetails(@PathVariable("id") Long id, Model model) {
         Game game = gameService.getGameById(id);
@@ -45,6 +52,4 @@ public class GameController {
         predictionService.savePrediction(prediction, gameId, user);
         return "redirect:/games/" + gameId;
     }
-
-
 }
